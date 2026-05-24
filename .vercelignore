@@ -1,0 +1,8 @@
+backend/
+infra/
+edge/
+docs/
+.cursor/
+*.md
+*.docx
+*.doc
