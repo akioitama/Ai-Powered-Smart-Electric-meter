@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1rem;
+  }
+
+  html,
+  body {
+    @apply bg-bg-deep text-ink antialiased;
+    background-image:
+      radial-gradient(70% 50% at 50% -10%, rgba(0, 229, 255, 0.16) 0%, transparent 60%),
+      radial-gradient(50% 40% at 100% 100%, rgba(139, 92, 246, 0.12) 0%, transparent 70%),
+      radial-gradient(40% 30% at 0% 80%, rgba(255, 61, 204, 0.08) 0%, transparent 70%);
+    background-attachment: fixed;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0, 229, 255, 0.3), rgba(139, 92, 246, 0.3));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(139, 92, 246, 0.55));
+  }
+
+  ::selection {
+    background: rgba(0, 229, 255, 0.4);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Glassmorphism panel */
+  .glass {
+    @apply relative rounded-2xl border border-border bg-bg-card/60 backdrop-blur-xl shadow-card;
+  }
+  .glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 35%);
+  }
+
+  .glass-strong {
+    @apply relative rounded-2xl border border-border-strong bg-bg-card/75 backdrop-blur-2xl shadow-card;
+  }
+
+  /* Holographic / neon utilities */
+  .neon-text {
+    text-shadow:
+      0 0 12px rgba(0, 229, 255, 0.7),
+      0 0 32px rgba(0, 229, 255, 0.35);
+  }
+  .neon-text-violet {
+    text-shadow:
+      0 0 12px rgba(139, 92, 246, 0.75),
+      0 0 32px rgba(139, 92, 246, 0.35);
+  }
+  .neon-border {
+    box-shadow:
+      0 0 0 1px rgba(0, 229, 255, 0.45),
+      0 0 28px rgba(0, 229, 255, 0.25);
+  }
+  .holo-text {
+    background: linear-gradient(135deg, #00F0FF 0%, #3D8BFF 35%, #8B5CF6 65%, #FF3DCC 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: border-flow 8s ease-in-out infinite;
+  }
+  .holo-frame {
+    position: relative;
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(10, 15, 34, 0.85), rgba(10, 15, 34, 0.85)) padding-box,
+      linear-gradient(135deg, #00F0FF, #3D8BFF, #8B5CF6, #FF3DCC) border-box;
+    border: 1px solid transparent;
+    background-size: 100% 100%, 200% 200%;
+    animation: border-flow 8s ease-in-out infinite;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(120, 200, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 200, 255, 0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .grid-bg-lg {
+    background-image:
+      linear-gradient(rgba(120, 200, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 200, 255, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Animated dotted matrix */
+  .dot-matrix {
+    background-image: radial-gradient(rgba(0, 229, 255, 0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .reading-mono {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+
+  /* Eyebrow / chip */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-border-strong bg-bg-card/60 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] uppercase text-electric-200 backdrop-blur-md;
+  }
+
+  /* Holographic chip with sweeping shimmer */
+  .chip-holo {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .chip-holo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(0, 240, 255, 0.45) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 3.5s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  /* Ambient grid floor — used in hero */
+  .grid-floor {
+    background-image:
+      linear-gradient(rgba(0, 229, 255, 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.18) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(900px) rotateX(60deg) translateZ(-100px) translateY(40px);
+    transform-origin: 50% 100%;
+    mask-image: radial-gradient(50% 60% at 50% 30%, black 30%, transparent 75%);
+  }
+
+  /* Beam streak */
+  .beam {
+    position: absolute;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 229, 255, 0.55) 50%,
+      transparent 100%
+    );
+    filter: blur(2px);
+  }
+
+  /* Holographic chart container */
+  .holo-card {
+    @apply relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-bg-card/80 via-bg-card/60 to-bg-card/80 backdrop-blur-xl;
+  }
+  .holo-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.5), rgba(139, 92, 246, 0.4) 50%, rgba(255, 61, 204, 0.3));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* Pulse ring (e.g., on map nodes) */
+  .pulse-dot {
+    position: relative;
+  }
+  .pulse-dot::before,
+  .pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 1px solid currentColor;
+    animation: pulse-ring 2.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) infinite;
+  }
+  .pulse-dot::after {
+    animation-delay: 1.3s;
+  }
+
+  /* Cinematic divider */
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 229, 255, 0.3) 30%,
+      rgba(139, 92, 246, 0.4) 50%,
+      rgba(0, 229, 255, 0.3) 70%,
+      transparent 100%
+    );
+  }
+
+  /* Number counter style */
+  .num-display {
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-feature-settings: "tnum" on;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .mask-fade-y {
+    mask-image: linear-gradient(180deg, black 60%, transparent 100%);
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+  .mask-radial {
+    mask-image: radial-gradient(closest-side, black 60%, transparent 100%);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Conic glow ring (used behind visuals) */
+  .conic-glow {
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(0, 229, 255, 0.0) 0deg,
+      rgba(0, 229, 255, 0.55) 90deg,
+      rgba(139, 92, 246, 0.55) 180deg,
+      rgba(255, 61, 204, 0.45) 270deg,
+      rgba(0, 229, 255, 0.0) 360deg
+    );
+    filter: blur(28px);
+  }
+
+  /* Responsive container width helper */
+  .container-tight {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+}

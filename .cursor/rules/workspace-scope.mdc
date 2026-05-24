@@ -1,0 +1,27 @@
+---
+description: Keep all file changes inside this repository
+alwaysApply: true
+---
+
+# Workspace Scope
+
+All code changes, new files, and edits must stay inside this repository:
+
+`h:\Projects\Ai Meter`
+
+## Requirements
+
+- Create, modify, and delete files only under this project root.
+- Do not write to other directories on the machine unless the user explicitly asks.
+- Prefer relative paths from the repo root (e.g. `src/...`, `.cursor/...`).
+- If a task would normally touch files outside this folder, ask the user first or keep the work in-repo (e.g. config or scripts here).
+
+## Examples
+
+```text
+✅ GOOD: h:\Projects\Ai Meter\src\app.ts
+✅ GOOD: .cursor/rules/my-rule.mdc
+
+❌ BAD:  h:\Projects\Other Project\file.ts
+❌ BAD:  C:\Users\...\Documents\script.py
+```

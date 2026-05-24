@@ -1,0 +1,54 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Node / Next ---
+node_modules/
+.next/
+out/
+.turbo/
+dist/
+build/
+.coverage
+coverage/
+
+# --- Env / secrets ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+
+# --- DB / data ---
+*.sqlite
+*.db
+*.dump
+data/
+
+# --- ML artifacts (keep .gitkeep, ignore weights) ---
+backend/app/ml/*.pkl
+backend/app/ml/*.joblib
+!backend/app/ml/.gitkeep
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Docker volumes (local) ---
+infra/_data/
