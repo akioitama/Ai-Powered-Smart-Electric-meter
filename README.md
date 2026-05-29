@@ -1,6 +1,6 @@
 # AI Powered Smart Electric Meter
 
-A futuristic, AI-driven web platform for the Smart Electric Meter project — pairs with a Raspberry Pi 4 + ZMPT101B + ACS712 + Relay hardware setup. Designed to deploy **fully on Vercel**: the Next.js app contains both the UI and the API as TypeScript route handlers backed by Vercel Postgres.
+A futuristic, AI-driven web platform for the Smart Electric Meter project — pairs with a Raspberry Pi 4 + ZMPT101B + ACS712 + Relay hardware setup. Designed to deploy **fully on Vercel**: the Next.js app contains both the UI and the API as TypeScript route handlers backed by Vercel Postgres..
 
 ## Stack
 
